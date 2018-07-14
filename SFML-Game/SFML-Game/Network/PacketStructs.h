@@ -1,8 +1,8 @@
 #pragma once
-#include "PacketType.h"
 #include "FileTransferData.h"
-#include <string>
+#include "PacketType.h"
 #include <memory>
+#include <string>
 #include <SFML\Network.hpp>
 
 namespace PS
@@ -10,17 +10,26 @@ namespace PS
 	class ChatMessage
 	{
 	public:
-		ChatMessage(const std::string & str);
+		ChatMessage(const std::string _msg);
 		std::shared_ptr<sf::Packet> toPacket();
 	private:
-		std::string m_message;
+		std::string m_Message;
+	};
+
+	class FileTransferRequestFile
+	{
+	public:
+		FileTransferRequestFile(const std::string _fileName);
+		std::shared_ptr<sf::Packet> toPacket();
+	private:
+		std::string m_FileName;
 	};
 
 	class FileDataBuffer
 	{
 	public:
 		std::shared_ptr<sf::Packet> toPacket();
-		char m_dataBuffer[FileTransferData::m_bufferSize];
-		std::int32_t m_size;
+		char m_DataBuffer[FileTransferData::m_BufferSize];
+		int m_Size;
 	};
 }

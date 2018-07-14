@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game()
-	:window(sf::VideoMode(200, 200), "SFML works!")
+	:window(sf::VideoMode(400, 400), "Game")
 {
 }
 
@@ -24,6 +24,7 @@ void Game::Go()
 void Game::Begin()
 {
 	window.clear();
+	m_CWind.Begin();
 }
 
 void Game::UpdateModel()
@@ -34,14 +35,17 @@ void Game::UpdateModel()
 		if (event.type == sf::Event::Closed)
 			window.close();
 	}
+	m_CWind.Update();
 }
 
 void Game::Compose()
 {
 	window.draw(shape);
+	m_CWind.Compose();
 }
 
 void Game::End()
 {
 	window.display();
+	m_CWind.End();
 }

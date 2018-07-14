@@ -2,19 +2,18 @@
 #include <fstream>
 #include <memory>
 #include <SFML\Network.hpp>
-
 struct FileTransferData
 {
-	static const int m_bufferSize = 16384;
-	std::string m_fileName;
-	std::int32_t m_bytesWritten;
-	std::int32_t m_fileOffset;
-	std::streamoff m_fileSize;
-	std::int32_t m_remainingBytes;
-	std::ifstream m_infileStream;
-	std::ofstream m_outfileStream;
-	bool m_transferInProgress = false;
-	char m_buffer[m_bufferSize];
+	static const int m_BufferSize = 16384;
+	std::string m_FileName;
+	std::int32_t m_BytesWritten;
+	std::int32_t m_FileOffset;
+	std::int32_t m_RemainingBytes;
+	std::ifstream m_InfileStream;
+	std::ofstream m_OutfileStream;
+	std::streamoff m_FileSize;
+	bool m_TransferInProgress = false;
+	char m_Buffer[m_BufferSize];
 	bool Initialize(const std::string & fileName, std::string & errMsg);
-	std::shared_ptr<sf::Packet> getOutgoingBufferPacket(std::int32_t& bytes, std::string& msg);
+	std::shared_ptr<sf::Packet> GetOutgoingBufferPacket(std::int32_t& bytes, std::string& msg);
 };

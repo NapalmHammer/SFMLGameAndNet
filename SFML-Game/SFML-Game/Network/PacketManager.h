@@ -10,7 +10,7 @@ private:
 	std::queue<std::shared_ptr<sf::Packet>> m_Queue_Packets;
 	std::mutex m_Mutex_Packets;
 public:
-	void clear();
+	void Clear();
 	bool HasPendingPackets();
 	void Append(std::shared_ptr<sf::Packet> p);
 	std::shared_ptr<sf::Packet> Retrieve();

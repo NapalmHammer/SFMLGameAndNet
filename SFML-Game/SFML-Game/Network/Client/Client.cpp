@@ -1,5 +1,5 @@
 #include "Client.h"
-#include "PacketStructs.h"
+#include "..\PacketStructs.h"
 
 
 void Client::ClientThread(Client& _client)
@@ -34,7 +34,7 @@ void Client::PacketSenderThread(Client& _client)
 		{
 			auto p = _client.m_pm.Retrieve();
 
-			if (!_client.SendAll((const char*)(p->getData()), p->getDataSize))
+			if (!_client.SendAll((const char*)(p->getData()), p->getDataSize()))
 				break;
 		}
 	}
@@ -56,41 +56,41 @@ bool Client::RequestFile(const std::string& _fileName)
 {
 	if (m_isConnected)
 	{
-		if (m_file.m_transferInProgress)
+		if (m_file.m_TransferInProgress)
 		{
-			chatLog->UpdateLog("Client", "UHOH: Function(Client::RequestFile) - File Transfer already in progress.\n");
+			//chatLog->UpdateLog("Client", "UHOH: Function(Client::RequestFile) - File Transfer already in progress.\n");
 			return false;
 		}
-		m_file.m_transferInProgress = true;
+		m_file.m_TransferInProgress = true;
 		//std::string path = "ClientDownloads\\";
-		m_file.m_outfileStream.open(/*path +*/ _fileName, std::ios::binary);
-		chatLog->UpdateLog("Client", "Opening " + /*path +*/ _fileName + " for writing file to.");
+		m_file.m_OutfileStream.open(/*path +*/ _fileName, std::ios::binary);
+		//chatLog->UpdateLog("Client", "Opening " + /*path +*/ _fileName + " for writing file to.");
 
-		if (!m_file.m_outfileStream.is_open())
+		if (!m_file.m_OutfileStream.is_open())
 		{
-			chatLog->UpdateLog("Client", "File " + /*path +*/ _fileName + " Is not open.");
-			m_file.m_outfileStream.open(/*path +*/ _fileName, std::ios::binary);
+			//chatLog->UpdateLog("Client", "File " + /*path +*/ _fileName + " Is not open.");
+			m_file.m_OutfileStream.open(/*path +*/ _fileName, std::ios::binary);
 		}
-		m_file.m_fileName = _fileName;
-		m_file.m_bytesWritten = 0;
-		if (!m_file.m_outfileStream.is_open())
+		m_file.m_FileName = _fileName;
+		m_file.m_BytesWritten = 0;
+		if (!m_file.m_OutfileStream.is_open())
 		{
-			chatLog->UpdateLog("Client", "UHOH: Function(Client::Requestfile) - Unable to open file: " + _fileName + " for writing.\n");
+			//chatLog->UpdateLog("Client", "UHOH: Function(Client::Requestfile) - Unable to open file: " + _fileName + " for writing.\n");
 			return false;
 		}
-		chatLog->UpdateLog("Client", "Requesting file from server: " + _fileName);
+		//chatLog->UpdateLog("Client", "Requesting file from server: " + _fileName);
 		sf::Packet requestFilePacket;
 		requestFilePacket << std::int32_t(PacketType::FileTransferRequestFile);
-		requestFilePacket << m_file.m_fileName.size();
-		requestFilePacket << m_file.m_fileName.c_str();
-		requestFilePacket << m_file.m_fileName.size();
+		requestFilePacket << m_file.m_FileName.size();
+		requestFilePacket << m_file.m_FileName.c_str();
+		requestFilePacket << m_file.m_FileName.size();
 		m_pm.Append(std::make_shared<sf::Packet>(requestFilePacket));
-		chatLog->UpdateLog("Client", "Received file name: " + _fileName + " from server.");
+		//chatLog->UpdateLog("Client", "Received file name: " + _fileName + " from server.");
 		return true;
 	}
 	else
 	{
-		chatLog->UpdateLog("Client", "ERROR: USER IS A DUMBER THAN DIRT, TRIED TO GET A FILE WHILE NOT CONNECTED TO ANYTHING. REEEEEEEE.");
+		//chatLog->UpdateLog("Client", "ERROR: USER IS A DUMBER THAN DIRT, TRIED TO GET A FILE WHILE NOT CONNECTED TO ANYTHING. REEEEEEEE.");
 		return false;
 	}
 }
@@ -109,7 +109,7 @@ bool Client::SendFile(const std::string& _fileName)
 	}
 	else
 	{
-		chatLog->UpdateLog("Client", "Wow, user tried to send a file while not connected to anything. REEEEEEEEEEEE");
+		//chatLog->UpdateLog("Client", "Wow, user tried to send a file while not connected to anything. REEEEEEEEEEEE");
 		return false;
 	}
 }
@@ -125,11 +125,11 @@ void Client::SetName(const std::string _name)
 		ClientSendFile << _name.size();
 		m_pm.Append(std::make_shared<sf::Packet>(ClientSendFile));
 		userName = _name;
-		chatLog->UpdateLog("Client", "Set name on server to " + _name);
+		//chatLog->UpdateLog("Client", "Set name on server to " + _name);
 	}
 	else
 	{
-		chatLog->UpdateLog("Client", "You can't set your name on a server you aren't connected to. Kill yourself.");
+		//chatLog->UpdateLog("Client", "You can't set your name on a server you aren't connected to. Kill yourself.");
 	}
 }
 
@@ -141,13 +141,13 @@ void Client::HandleInput(const std::string& _message)
 	{
 		if (_message == "/exit" || _message == "/Exit")
 		{
-			chatLog->OutputLog();
+			//chatLog->OutputLog();
 			Disconnect();
 			exit(0);
 		}
 		else
 		{
-			chatLog->UpdateLog("Client", "That isn't a // command. Take a dump on the floor.");
+			//chatLog->UpdateLog("Client", "That isn't a // command. Take a dump on the floor.");
 		}
 
 		break;
@@ -155,7 +155,7 @@ void Client::HandleInput(const std::string& _message)
 	default:
 		if (_message.size() < 1)
 			break;
-		chatLog->UpdateLog(userName, _message);
+		//chatLog->UpdateLog(userName, _message);
 		SendString(":" + _message);
 		break;
 	}
@@ -181,7 +181,7 @@ bool Client::Connect()
 	conState = Connected;
 	m_isConnected = true;
 	m_terminateThreads = false;
-	chatLog->UpdateLog("Client", "Connecte to server!");
+	//chatLog->UpdateLog("Client", "Connecte to server!");
 
 	if (m_pst.joinable())
 		m_pst.join();
@@ -202,18 +202,18 @@ void Client::Disconnect()
 			m_pst.join();
 		if (m_ct.joinable())
 			m_ct.join();
-		if (m_file.m_infileStream.is_open())
-			m_file.m_infileStream.close();
-		if (m_file.m_outfileStream.is_open())
-			m_file.m_outfileStream.close();
-		m_file.m_transferInProgress = false;
+		if (m_file.m_InfileStream.is_open())
+			m_file.m_InfileStream.close();
+		if (m_file.m_OutfileStream.is_open())
+			m_file.m_OutfileStream.close();
+		m_file.m_TransferInProgress = false;
 		m_isConnected = false;
 
-		chatLog->UpdateLog("Client", "Disconnected from server");
+		//chatLog->UpdateLog("Client", "Disconnected from server");
 	}
 	else
 	{
-		chatLog->UpdateLog("Client", "Dummy, You can't disconnect if the socket isn't connected to anything. Get Schwifty.");
+		//chatLog->UpdateLog("Client", "Dummy, You can't disconnect if the socket isn't connected to anything. Get Schwifty.");
 	}
 
 }

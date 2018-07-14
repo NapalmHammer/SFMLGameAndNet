@@ -123,18 +123,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FileTransferData.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="ChatWindow.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InputConsole.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PacketManager.cpp" />
-    <ClCompile Include="PacketStructs.cpp" />
+    <ClCompile Include="Network\Client\Client.cpp" />
+    <ClCompile Include="Network\Client\ClientProcessPacket.cpp" />
+    <ClCompile Include="Network\Client\ClientSendGetMethods.cpp" />
+    <ClCompile Include="Network\FileTransferData.cpp" />
+    <ClCompile Include="Network\PacketManager.cpp" />
+    <ClCompile Include="Network\PacketStructs.cpp" />
+    <ClCompile Include="Network\Server\Server.cpp" />
+    <ClCompile Include="Network\Server\ServerProcessPacket.cpp" />
+    <ClCompile Include="Network\Server\ServerSendGetMethods.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileTransferData.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="ChatWindow.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="PacketManager.h" />
-    <ClInclude Include="PacketStructs.h" />
-    <ClInclude Include="PacketType.h" />
+    <ClInclude Include="InputConsole.h" />
+    <ClInclude Include="Network\Client\Client.h" />
+    <ClInclude Include="Network\FileTransferData.h" />
+    <ClInclude Include="Network\PacketManager.h" />
+    <ClInclude Include="Network\PacketStructs.h" />
+    <ClInclude Include="Network\PacketType.h" />
+    <ClInclude Include="Network\Server\Server.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

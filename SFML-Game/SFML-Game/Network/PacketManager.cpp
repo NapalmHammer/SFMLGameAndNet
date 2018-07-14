@@ -1,6 +1,6 @@
 #include "PacketManager.h"
 
-void PacketManager::clear()
+void PacketManager::Clear()
 {
 	std::lock_guard<std::mutex> lock(m_Mutex_Packets);
 	m_Queue_Packets = std::queue<std::shared_ptr<sf::Packet>>{};
