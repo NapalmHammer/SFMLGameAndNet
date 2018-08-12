@@ -3,7 +3,7 @@
 #include "..\FileTransferData.h"
 #include "..\PacketManager.h"
 #include "..\PacketType.h"
-#include "..\Chat\ChatLog.h"
+//#include "Chat\ChatLog.h"
 
 class Client
 {
@@ -24,7 +24,7 @@ public:
 	bool SendFile(const std::string& _fileName);
 	void SetName(const std::string _name);
 	void HandleInput(const std::string& _message);
-	ChatLog& GetChatLog() { return *chatLog; };
+	//ChatLog& GetChatLog() { return *chatLog; };
 	~Client();
 private:
 	//-- Processing methods
@@ -38,10 +38,10 @@ private:
 	bool SendAll(const char* _data, const std::int32_t _totalBytes);
 
 	//-- Get methods
-	bool GetAll(char* data, const std::int32_t _totalBytes);
-	bool GetInt32_t(std::int32_t& _int32_t);
-	bool GetPacketType(PacketType &_packettype);
 	bool GetString(std::string &_string);
+	bool GetPacketType(PacketType &_packettype);
+	bool GetInt32_t(std::int32_t& _int32_t);
+	bool GetAll(char* data, const std::int32_t _totalBytes);
 private:
 	FileTransferData m_file;
 	PacketManager m_pm; //Packet Manager
@@ -54,5 +54,5 @@ private:
 	std::thread m_ct; //Create thread to listen to server
 
 	std::string userName;
-	ChatLog* chatLog;
+	//ChatLog* chatLog;
 };

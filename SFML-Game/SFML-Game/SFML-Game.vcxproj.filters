@@ -13,39 +13,96 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{e7d92dc6-e062-4af0-9729-6449c22f5b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Client">
+      <UniqueIdentifier>{235a11d4-2059-433f-821c-71f0a75307c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Server">
+      <UniqueIdentifier>{e7043082-cb55-46e1-b84a-08752ace2ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ChatWindow">
+      <UniqueIdentifier>{ec5af035-66fe-4ec4-8c3b-064a640409a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{f612c4b5-8c30-4028-ad3e-8c4649f72a81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Network\Client\Client.cpp">
+      <Filter>Network\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Client\ClientProcessPacket.cpp">
+      <Filter>Network\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Client\ClientSendGetMethods.cpp">
+      <Filter>Network\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\FileTransferData.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\PacketManager.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\PacketStructs.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Server\ServerProcessPacket.cpp">
+      <Filter>Network\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Server\ServerSendGetMethods.cpp">
+      <Filter>Network\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Server\Server.cpp">
+      <Filter>Network\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="ChatWindow.cpp">
+      <Filter>ChatWindow</Filter>
+    </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="PacketManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="InputConsole.cpp">
+      <Filter>ChatWindow</Filter>
     </ClCompile>
-    <ClCompile Include="PacketStructs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FileTransferData.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Log.cpp">
+      <Filter>ChatWindow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Network\Client\Client.h">
+      <Filter>Network\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\FileTransferData.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\PacketManager.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\PacketStructs.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\PacketType.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Server\Server.h">
+      <Filter>Network\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="ChatWindow.h">
+      <Filter>ChatWindow</Filter>
+    </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
+      <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="PacketManager.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="InputConsole.h">
+      <Filter>ChatWindow</Filter>
     </ClInclude>
-    <ClInclude Include="PacketStructs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PacketType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FileTransferData.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Log.h">
+      <Filter>ChatWindow</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

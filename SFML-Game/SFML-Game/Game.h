@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "ChatWindow.h"
 class Game
 {
 public:
@@ -12,4 +12,5 @@ private:
 	void End();
 	sf::RenderWindow window;
 	sf::CircleShape shape;
+	ChatWindow m_CWind;
 };
