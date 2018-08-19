@@ -3,7 +3,6 @@
 
 int main()
 {
-	Game game;
-	game.Go();
-	return 0;
+	Game game(400, 400, "SFML Game");
+	return EXIT_SUCCESS;
 }

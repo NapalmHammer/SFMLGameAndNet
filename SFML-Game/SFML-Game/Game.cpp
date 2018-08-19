@@ -1,17 +1,46 @@
 #include "Game.h"
 
-Game::Game()
-	:window(sf::VideoMode(400, 400), "Game")
+Game::Game(int width, int height, std::string title)
 {
+	_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
+
+	_data->shape.setRadius(100.0f);
+	_data->shape.setFillColor(sf::Color::Green);
+
+	this->Go();
 }
 
 void Game::Go()
 {
-	shape.setRadius(100.0f);
-	shape.setFillColor(sf::Color::Green);
+	float newTime, frameTime, interpolation;
+	float currentTime = this->_clock.getElapsedTime().asSeconds();
+	float accumulator = 0.0f;
 
-	while (window.isOpen())
+	while (this->_data->window.isOpen())
 	{
+		this->_data->m_fsm.ProcessStateChanges();
+		newTime = this->_clock.getElapsedTime().asSeconds();
+		frameTime = newTime - currentTime;
+
+		if (frameTime > 0.25f)
+		{
+			frameTime = 0.25f;
+		}
+
+		currentTime = newTime;
+		accumulator += frameTime;
+
+		while (accumulator >= dt)
+		{
+			this->_data->m_fsm.GetActiveState()->HandleInput();
+			this->_data->m_fsm.GetActiveState()->Update(dt);
+
+			accumulator -= dt;
+			this->_data->m_fsm.GetActiveState()->Draw(interpolation);
+		}
+
+		interpolation = accumulator / dt;
+
 		Begin();
 		UpdateModel();
 		Compose();

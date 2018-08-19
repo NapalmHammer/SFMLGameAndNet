@@ -72,6 +72,18 @@
     <ClCompile Include="Log.cpp">
       <Filter>ChatWindow</Filter>
     </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStates.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Network\Client\Client.h">
@@ -103,6 +115,21 @@
     </ClInclude>
     <ClInclude Include="Log.h">
       <Filter>ChatWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStates.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

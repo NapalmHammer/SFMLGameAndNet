@@ -123,6 +123,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="GameStates.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="ChatWindow.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -139,6 +143,10 @@
     <ClCompile Include="Network\Server\ServerSendGetMethods.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="GameStates.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="ChatWindow.h" />
     <ClInclude Include="Game.h" />
@@ -149,6 +157,7 @@
     <ClInclude Include="Network\PacketStructs.h" />
     <ClInclude Include="Network\PacketType.h" />
     <ClInclude Include="Network\Server\Server.h" />
+    <ClInclude Include="State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
