@@ -1,8 +1,11 @@
 #include "Game.h"
+#include "SplashState.h"
 
 Game::Game(int width, int height, std::string title)
 {
 	_data->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
+
+	_data->m_fsm.AddState(StateRef(new SplashState(this->_data)));
 
 	_data->shape.setRadius(100.0f);
 	_data->shape.setFillColor(sf::Color::Green);
@@ -36,15 +39,15 @@ void Game::Go()
 			this->_data->m_fsm.GetActiveState()->Update(dt);
 
 			accumulator -= dt;
-			this->_data->m_fsm.GetActiveState()->Draw(interpolation);
 		}
 
 		interpolation = accumulator / dt;
+		this->_data->m_fsm.GetActiveState()->Draw(interpolation);
 
-		Begin();
-		UpdateModel();
-		Compose();
-		End();
+		//Begin();
+		//UpdateModel();
+		//Compose();
+		//End();
 	}
 }
 //----
@@ -52,29 +55,29 @@ void Game::Go()
 
 void Game::Begin()
 {
-	window.clear();
-	m_CWind.Begin();
+	//window.clear();
+	//m_CWind.Begin();
 }
 
 void Game::UpdateModel()
 {
-	sf::Event event;
-	while (window.pollEvent(event))
-	{
-		if (event.type == sf::Event::Closed)
-			window.close();
-	}
-	m_CWind.Update();
+	//sf::Event event;
+	//while (window.pollEvent(event))
+	//{
+	//	if (event.type == sf::Event::Closed)
+	//		window.close();
+	//}
+	//m_CWind.Update();
 }
 
 void Game::Compose()
 {
-	window.draw(shape);
-	m_CWind.Compose();
+	//window.draw(shape);
+	//m_CWind.Compose();
 }
 
 void Game::End()
 {
-	window.display();
-	m_CWind.End();
+	//window.display();
+	//m_CWind.End();
 }

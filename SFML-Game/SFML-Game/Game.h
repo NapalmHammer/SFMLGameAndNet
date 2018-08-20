@@ -10,6 +10,7 @@ struct GameData
 	sf::CircleShape shape;
 	ChatWindow m_CWind;
 	StateMachine m_fsm;
+	AssetManager assets;
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;

@@ -84,6 +84,9 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="SplashState.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Network\Client\Client.h">
@@ -129,6 +132,12 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="DEFINITIONS.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashState.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

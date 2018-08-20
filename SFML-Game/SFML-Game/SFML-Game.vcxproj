@@ -126,6 +126,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="GameStates.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="ChatWindow.cpp" />
@@ -144,8 +145,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="DEFINITIONS.h" />
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="SplashState.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="ChatWindow.h" />
