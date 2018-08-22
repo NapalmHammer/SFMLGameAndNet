@@ -11,6 +11,7 @@ struct GameData
 	ChatWindow m_CWind;
 	StateMachine m_fsm;
 	AssetManager assets;
+	InputManager input;
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;

@@ -1,5 +1,6 @@
 #include <sstream>
 #include "SplashState.h"
+#include "MainMenuState.h"
 
 #include <iostream>
 
@@ -39,8 +40,7 @@ void SplashState::Update(float dt)
 {
 	if (this->_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
 	{
-		//Switch to main menu
-		std::cout << "Go to main menu" << std::endl;
+		this->_data->m_fsm.AddState(StateRef(new MainMenuState(_data)), true);
 	}
 }
 

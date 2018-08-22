@@ -75,9 +75,6 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="GameStates.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="AssetManager.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -85,6 +82,9 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="SplashState.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuState.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,9 +125,6 @@
     <ClInclude Include="StateMachine.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="GameStates.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -138,6 +135,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="SplashState.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuState.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
