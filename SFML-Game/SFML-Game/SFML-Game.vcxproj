@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AreaMap.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="Network\Server\ServerSendGetMethods.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AreaMap.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="DEFINITIONS.h" />
     <ClInclude Include="GameState.h" />

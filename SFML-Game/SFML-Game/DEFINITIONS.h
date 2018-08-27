@@ -15,3 +15,17 @@
 
 #define MAIN_MENU_PLAY_BUTTON_OUTER "../Resources/res/PlayButtonOuter.png"
 
+#define GAME_BACKGROUND_FILEPATH "../Resources/res/MainMenuBackground.png"
+
+#define PAUSE_BUTTON "../Resources/res/PauseButton.png"
+
+#define TILES_FILEPATH "../Resources/res/Tiles.png"
+
+#define CHARACTER_FILEPATH "../Resources/res/Player.png"
+
+#define STATE_PLAYING 98
+#define STATE_PAUSED 97
+
+#define BEGINNING_MAP_WIDTH 10
+#define BEGINNING_MAP_HEIGHT 10
+

@@ -88,6 +88,9 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="GameState.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -144,6 +147,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="GameState.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
