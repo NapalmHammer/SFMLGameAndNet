@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 #include "DEFINITIONS.h"
 #include <vector>
 
@@ -28,6 +29,7 @@ public:
 	std::vector<Tile>& GetTiles();
 private:
 	std::vector<Tile> _tiles;
+	sf::Sprite _tileSprites;
 	int _mapWidth;
 	int _mapHeight;
 };
