@@ -4,7 +4,8 @@
 #include <iostream>
 
 GameState::GameState(GameDataRef data)
-	:_data(data)
+	:_data(data),
+	_beginningMap(data)
 {
 
 }
@@ -13,16 +14,14 @@ void GameState::Init()
 {
 	gameState = STATE_PLAYING;
 
-	this->_data->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
-	this->_data->assets.LoadTexture("Tiles", TILES_FILEPATH);
+	//this->_data->assets.LoadTexture("Pause Button", PAUSE_BUTTON);
 
 	this->_background.setTexture(this->_data->assets.
 		GetTexture("Background"));
-	_background.setTexture(this->_data->assets.
-			GetTexture("Pause Button"));
 
-	this->_tiles.setTexture(this->_data->assets.
-		GetTexture("Tiles"));
+	//_background.setTexture(this->_data->assets.
+	//		GetTexture("Pause Button"));
+
 
 	//_pauseButton.setPosition(this->_data->window.getSize().x -
 	//	_pauseButton.getLocalBounds().width, _pauseButton.getPosition().y);
@@ -56,6 +55,7 @@ void GameState::Draw(float dt)
 	this->_data->window.clear();
 
 	this->_data->window.draw(this->_background);
+	this->_beginningMap.Draw();
 	//this->_data->window.draw(this->_pauseButton);
 
 	this->_data->window.display();
