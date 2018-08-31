@@ -37,8 +37,20 @@ void AreaMap::Draw()
 		{
 			if (_map[i * _mapHeight + j] != 0)
 			{
-				sf::Sprite temp = GetTileTextureRect(i * _mapHeight + j);
-				temp.setPosition({ (float)j * 128.0f, (float)i * 64.0f });
+				sf::Sprite temp = GetTileTextureRect(_map[i * _mapHeight + j]);
+				sf::Vector2f tileCartesianXY({ (float)j * 90.0f, (float)i * 90.0f });
+				
+				sf::Transform translation;
+				translation.translate(650.0f, -250.0f);
+				
+				sf::Transform rotation;
+				rotation.rotate(45);
+
+				sf::Transform transform = rotation * translation;
+
+				tileCartesianXY = transform.transformPoint(tileCartesianXY);
+				tileCartesianXY.y /= 2;
+				temp.setPosition(tileCartesianXY);
 				this->_data->window.draw(temp);
 			}
 
@@ -57,27 +69,27 @@ sf::Sprite AreaMap::GetTileTextureRect(int it)
 	{
 	case TileType::One:
 	{
-		this->_tileSprites.setTextureRect({ 0,0,128,64 });
+		this->_tileSprites.setTextureRect({ 0,0,128,82 });
 	}
 	break;
 	case TileType::two:
 	{
-		this->_tileSprites.setTextureRect({ 128,0,128,64 });
+		this->_tileSprites.setTextureRect({ 128,0,128,82 });
 	}
 	break;
 	case TileType::three:
 	{
-		this->_tileSprites.setTextureRect({ 256,0,128,64 });
+		this->_tileSprites.setTextureRect({ 256,0,128,82 });
 	}
 	break;
 	case TileType::four:
 	{
-		this->_tileSprites.setTextureRect({ 384,0,128,64 });
+		this->_tileSprites.setTextureRect({ 384,0,128,82 });
 	}
 	break;
 	case TileType::five:
 	{
-		this->_tileSprites.setTextureRect({ 512,0,128,64 });
+		this->_tileSprites.setTextureRect({ 512,0,128,82 });
 	}
 	break;
 	}
