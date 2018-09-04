@@ -42,7 +42,7 @@ void MainMenuState::Init()
 
 	this->_title.setPosition((SCREEN_WIDTH / 2) -
 		(this->_title.getGlobalBounds().width / 2),
-		this->_title.getGlobalBounds().height * 0.1);
+		this->_title.getGlobalBounds().height * 0.1f);
 }
 
 void MainMenuState::HandleInput()

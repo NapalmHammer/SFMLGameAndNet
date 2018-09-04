@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include "DEFINITIONS.h"
 #include "Game.h"
@@ -29,10 +30,13 @@ public:
 
 	void Init(int width, int height );
 	void Draw();
-	//std::vector<Tile>& GetTiles();
+	sf::Transform& GetScale()
+	{
+		return scale;
+	}
+	void Update(sf::Keyboard::Key key);
 private:
 	sf::Sprite GetTileTextureRect(int it);
-	//std::vector<Tile> _tiles;
 	sf::Sprite _tileSprites;
 	GameDataRef _data;
 	int _mapWidth;
@@ -47,5 +51,9 @@ private:
 																1,0,2,2,2,2,2,2,0,1,
 																4,0,0,0,3,3,0,0,0,5,
 																4,4,1,1,1,1,1,1,5,5 };
+	sf::Transform scale;
+	sf::Transform translation;
+	sf::Transform rotation;
+	sf::Vector2f _scale;
 };
 

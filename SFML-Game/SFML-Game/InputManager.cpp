@@ -14,6 +14,11 @@ bool InputManager::IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button, 
 	return false;
 }
 
+bool InputManager::GetButtonPressed(sf::Keyboard::Key key)
+{
+	return sf::Keyboard::isKeyPressed(key);
+}
+
 sf::Vector2i InputManager::GetMousePosition(sf::RenderWindow & window)
 {
 	return sf::Mouse::getPosition(window);

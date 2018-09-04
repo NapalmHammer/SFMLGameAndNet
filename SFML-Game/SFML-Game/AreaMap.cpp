@@ -10,22 +10,15 @@ AreaMap::AreaMap(GameDataRef data)
 
 void AreaMap::Init(int width, int height)
 {
+	_scale = { 1.0f,1.0f };
 	this->_data->assets.LoadTexture("Tiles", TILES_FILEPATH);
 	this->_tileSprites.setTexture(this->_data->assets.GetTexture("Tiles"));
 
 	_mapWidth = BEGINNING_MAP_WIDTH;
 	_mapHeight = BEGINNING_MAP_HEIGHT;
-	//_tiles.reserve(BEGINNING_MAP_HEIGHT * BEGINNING_MAP_WIDTH);
-	//for (int i = 0; i < _mapHeight; i++)
-	//{
-	//	for (int j = 0; j < _mapWidth; j++)
-	//	{
-	//		_tiles.at(i * _mapHeight + j).y = i * 64;
-	//		_tiles.at(i * _mapHeight + j).x = j * 128;
-	//		_tiles.at(i * _mapHeight + j)._isWall = false;
-	//		_tiles.at(i * _mapHeight + j)._tType = TileType::One;
-	//	}
-	//}
+
+	translation.translate(650.0f, -250.0f);
+	rotation.rotate(45);
 
 }
 
@@ -38,18 +31,13 @@ void AreaMap::Draw()
 			if (_map[i * _mapHeight + j] != 0)
 			{
 				sf::Sprite temp = GetTileTextureRect(_map[i * _mapHeight + j]);
-				sf::Vector2f tileCartesianXY({ (float)j * 90.0f, (float)i * 90.0f });
-				
-				sf::Transform translation;
-				translation.translate(650.0f, -250.0f);
-				
-				sf::Transform rotation;
-				rotation.rotate(45);
+				sf::Vector2f tileCartesianXY({ ((float)j * 90.0f) * _scale.x, ((float)i * 90.0f) * _scale.y });
 
-				sf::Transform transform = rotation * translation;
+				sf::Transform transform = rotation * translation * scale;
 
 				tileCartesianXY = transform.transformPoint(tileCartesianXY);
 				tileCartesianXY.y /= 2;
+
 				temp.setPosition(tileCartesianXY);
 				this->_data->window.draw(temp);
 			}
@@ -58,10 +46,29 @@ void AreaMap::Draw()
 	}
 }
 
-//std::vector<Tile>& AreaMap::GetTiles()
-//{
-//	return _tiles;
-//}
+void AreaMap::Update(sf::Keyboard::Key key)
+{
+	if (key == sf::Keyboard::Left)
+	{
+		translation.translate({ 10.0f,0.0f });
+	}
+	else if (key == sf::Keyboard::Right)
+	{
+		translation.translate({ -10.0f,0.0f });
+	}
+	else if (key == sf::Keyboard::Up)
+	{
+		_scale += {0.1f, 0.1f};
+	}
+	else if (key == sf::Keyboard::Down)
+	{
+		_scale -= {0.1f, 0.1f};
+	}
+	else if (key == sf::Keyboard::Escape)
+	{
+		this->_data->window.close();
+	}
+}
 
 sf::Sprite AreaMap::GetTileTextureRect(int it)
 {
@@ -93,5 +100,6 @@ sf::Sprite AreaMap::GetTileTextureRect(int it)
 	}
 	break;
 	}
+	_tileSprites.setScale(_scale);
 	return _tileSprites;
 }
