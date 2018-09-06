@@ -57,9 +57,9 @@ void GameState::Update(float dt)
 
 void GameState::Draw(float dt)
 {
-	this->_data->window.clear();
+	this->_data->window.clear(sf::Color::Black);
 
-	this->_data->window.draw(this->_background);
+	//this->_data->window.draw(this->_background);
 	this->_beginningMap.Draw();
 	//this->_data->window.draw(this->_pauseButton);
 

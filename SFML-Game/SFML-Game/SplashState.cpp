@@ -19,9 +19,14 @@ SplashState::~SplashState()
 
 void SplashState::Init()
 {
-	this->_data->assets.LoadTexture("Splash State Background", SPLASH_SCENE_BACKGROUND_FILEPATH);
+	this->_data->assets.LoadTexture("Splash State Background", MAIN_MENU_TITLE_PATH);
 
 	_background.setTexture(this->_data->assets.GetTexture("Splash State Background"));
+
+
+	this->_background.setPosition((SCREEN_WIDTH / 2) -
+		(this->_background.getGlobalBounds().width / 2),
+		this->_background.getGlobalBounds().height * 0.1f);
 }
 
 void SplashState::HandleInput()
@@ -46,7 +51,7 @@ void SplashState::Update(float dt)
 
 void SplashState::Draw(float dt)
 {
-	this->_data->window.clear(sf::Color::Red);
+	this->_data->window.clear(sf::Color::Yellow);
 
 	this->_data->window.draw(this->_background);
 
