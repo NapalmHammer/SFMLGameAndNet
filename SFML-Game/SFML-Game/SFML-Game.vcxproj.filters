@@ -87,6 +87,12 @@
     <ClCompile Include="MainMenuState.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaMap.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Network\Client\Client.h">
@@ -138,6 +144,12 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuState.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaMap.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

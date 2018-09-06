@@ -4,6 +4,6 @@
 
 int main()
 {
-	Game game(SCREEN_WIDTH, SCREEN_HEIGHT, "SFML Game");
+	Game game(SCREEN_WIDTH, SCREEN_HEIGHT, "Another Battlenetwork Game");
 	return EXIT_SUCCESS;
 }

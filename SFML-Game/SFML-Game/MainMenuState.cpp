@@ -1,6 +1,7 @@
 #include <sstream>
 #include "MainMenuState.h"
 #include "DEFINITIONS.h"
+#include "GameState.h"
 #include <iostream>
 
 MainMenuState::MainMenuState(GameDataRef data)
@@ -41,7 +42,7 @@ void MainMenuState::Init()
 
 	this->_title.setPosition((SCREEN_WIDTH / 2) -
 		(this->_title.getGlobalBounds().width / 2),
-		this->_title.getGlobalBounds().height * 0.1);
+		this->_title.getGlobalBounds().height * 0.1f);
 }
 
 void MainMenuState::HandleInput()
@@ -57,8 +58,22 @@ void MainMenuState::HandleInput()
 		if (this->_data->input.IsSpriteClicked(this->
 			_playButton, sf::Mouse::Left, this->_data->window))
 		{
-			// Switch to game state
-			std::cout << "Go to game screen" << std::endl;
+			this->_data->m_fsm.AddState(StateRef(std::make_unique<GameState>(_data)), true);
+			break;
+		}
+		if (event.type == sf::Event::KeyPressed)
+		{
+			if (event.key.code == sf::Keyboard::Return)
+			{
+				this->_data->m_fsm.AddState(StateRef(std::make_unique<GameState>(_data)), true);
+				break;
+			}
+			else if (event.key.code == sf::Keyboard::Escape)
+			{
+				this->_data->window.close();
+				break;
+			}
+
 		}
 	}
 }
@@ -70,9 +85,9 @@ void MainMenuState::Update(float dt)
 
 void MainMenuState::Draw(float dt)
 {
-	this->_data->window.clear();
+	this->_data->window.clear(sf::Color::White);
 
-	this->_data->window.draw(this->_background);
+	//this->_data->window.draw(this->_background);
 	this->_data->window.draw(this->_playButton);
 	this->_data->window.draw(this->_playButtonOuter);
 	this->_data->window.draw(this->_title);
