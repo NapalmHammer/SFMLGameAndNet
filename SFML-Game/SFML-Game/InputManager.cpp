@@ -4,7 +4,7 @@ bool InputManager::IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button, 
 {
 	if (sf::Mouse::isButtonPressed(button))
 	{
-		sf::IntRect tempRect(object.getPosition().x, object.getPosition().y, object.getGlobalBounds().width, object.getGlobalBounds().height);
+		sf::IntRect tempRect((int)object.getPosition().x, (int)object.getPosition().y, (int)object.getGlobalBounds().width, (int)object.getGlobalBounds().height);
 
 		if (tempRect.contains(sf::Mouse::getPosition(window)))
 		{
