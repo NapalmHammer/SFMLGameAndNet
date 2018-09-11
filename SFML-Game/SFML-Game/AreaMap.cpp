@@ -2,9 +2,11 @@
 
 
 
-AreaMap::AreaMap(GameDataRef data)
-	:_data(data)
+AreaMap::AreaMap(GameDataRef data, sf::Vector2f spawnPointSet)
+	:_data(data),
+	m_spawPoint(spawnPointSet)
 {
+
 	Init(0,0);
 }
 

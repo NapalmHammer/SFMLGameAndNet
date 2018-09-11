@@ -26,13 +26,17 @@ enum TileType
 class AreaMap
 {
 public:
-	AreaMap(GameDataRef data);
+	AreaMap(GameDataRef data, sf::Vector2f spawnPointSet = { 45, 45 });
 
 	void Init(int width, int height );
 	void Draw();
 	sf::Transform& GetScale()
 	{
 		return scale;
+	}
+	sf::Vector2f GetSpawnPoint()
+	{
+		return m_spawPoint;
 	}
 	void Update(sf::Keyboard::Key key);
 private:
@@ -55,5 +59,6 @@ private:
 	sf::Transform translation;
 	sf::Transform rotation;
 	sf::Vector2f _scale;
+	sf::Vector2f m_spawPoint;
 };
 

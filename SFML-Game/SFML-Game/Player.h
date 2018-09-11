@@ -4,18 +4,18 @@
 #include "Game.h"
 #include "AreaMap.h"
 
-class Player
+class Player : public Entity
 {
 public:
-	Player();
+	Player(GameDataRef data, AreaMap& curMap, bool def = true);
 	~Player();
 	void Update(float dt);
 	void Draw();
+	void Init(bool def);
 	void SetDirection(const sf::Vector2f& dir);
 private:
-	Entity m_PlayerEntity;
 	GameDataRef _data;
-	AreaMap& m_mapRef;
-	Animation m_RightWalk;
+	AreaMap& m_curMapRef;
+	std::vector<Animation> m_animations;
 };
 

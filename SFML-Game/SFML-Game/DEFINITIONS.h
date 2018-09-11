@@ -29,3 +29,4 @@
 #define BEGINNING_MAP_WIDTH 10
 #define BEGINNING_MAP_HEIGHT 10
 
+#define DEFAULT_PLAYER_TEXTURE_FILEPATH "../Resources/res/PlaceHolderTester.png"
