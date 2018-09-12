@@ -35,3 +35,8 @@ void Player::Init(bool def)
 void Player::SetDirection(const sf::Vector2f & dir)
 {
 }
+
+void Player::SetPos(sf::Vector2f newPos)
+{
+	this->m_Pos = newPos;
+}

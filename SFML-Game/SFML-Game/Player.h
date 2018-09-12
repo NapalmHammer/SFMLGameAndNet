@@ -13,6 +13,7 @@ public:
 	void Draw();
 	void Init(bool def);
 	void SetDirection(const sf::Vector2f& dir);
+	void SetPos(sf::Vector2f newPos);
 private:
 	GameDataRef _data;
 	AreaMap& m_curMapRef;
