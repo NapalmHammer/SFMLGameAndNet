@@ -106,10 +106,10 @@
       <Filter>Game\Level</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -174,10 +174,10 @@
       <Filter>Game\Level</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Header Files</Filter>
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

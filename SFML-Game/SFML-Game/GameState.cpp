@@ -5,7 +5,8 @@
 
 GameState::GameState(GameDataRef data)
 	:_data(data),
-	_beginningMap(data)
+	_beginningMap(data),
+	_testPlayer(data, _beginningMap)
 {
 
 }
@@ -62,6 +63,7 @@ void GameState::Draw(float dt)
 	//this->_data->window.draw(this->_background);
 	this->_beginningMap.Draw();
 	//this->_data->window.draw(this->_pauseButton);
+	this->_testPlayer.Draw();
 
 	this->_data->window.display();
 }

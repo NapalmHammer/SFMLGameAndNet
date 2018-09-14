@@ -10,6 +10,9 @@ Game::Game(int width, int height, std::string title)
 	_data->shape.setRadius(100.0f);
 	_data->shape.setFillColor(sf::Color::Green);
 
+	_data->rotation.rotate(45);
+	_data->translation.translate({ 650.0f, -250.0f });
+
 	this->Go();
 }
 

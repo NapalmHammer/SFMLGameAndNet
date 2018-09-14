@@ -35,7 +35,7 @@ void AreaMap::Draw()
 				sf::Sprite temp = GetTileTextureRect(_map[i * _mapHeight + j]);
 				sf::Vector2f tileCartesianXY({ ((float)j * 90.0f) * _scale.x, ((float)i * 90.0f) * _scale.y });
 
-				sf::Transform transform = rotation * translation * scale;
+				sf::Transform transform = rotation * translation;
 
 				tileCartesianXY = transform.transformPoint(tileCartesianXY);
 				tileCartesianXY.y /= 2;

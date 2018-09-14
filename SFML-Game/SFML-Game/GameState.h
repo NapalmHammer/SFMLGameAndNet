@@ -4,6 +4,7 @@
 #include "State.h"
 #include "Game.h"
 #include "AreaMap.h"
+#include "Player.h"
 
 class GameState : public State
 {
@@ -20,7 +21,7 @@ private:
 
 	sf::Sprite _background;
 	AreaMap _beginningMap;
-
+	Player _testPlayer;
 	//sf::Sprite _pauseButton;
 
 	int turn;

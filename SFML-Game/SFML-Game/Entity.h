@@ -8,7 +8,7 @@ public:
 	sf::Sprite m_sprite;
 	sf::Vector2f m_Pos;
 	sf::Vector2f m_vel;
-	sf::IntRect m_spriteSize;
+	sf::Vector2i m_spriteSize;
 	float speed;
 };
 

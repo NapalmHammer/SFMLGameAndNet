@@ -12,6 +12,10 @@ struct GameData
 	StateMachine m_fsm;
 	AssetManager assets;
 	InputManager input;
+
+	sf::Transform translation;
+	sf::Transform rotation;
+	sf::Vector2f _scale;
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;
