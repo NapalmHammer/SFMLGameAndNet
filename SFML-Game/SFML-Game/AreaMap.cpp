@@ -37,8 +37,10 @@ void AreaMap::Draw()
 				tileCartesianXY.y /= 2;
 
 				sf::CircleShape shape(10.0f);
-				shape.setPosition(tileCartesianXY.x + 64.0f - 10.0f, tileCartesianXY.y - 10.0f);
+				shape.setPosition(tileCartesianXY.x, tileCartesianXY.y);
 				shape.setFillColor(sf::Color(150, 50, 250));
+
+				tileCartesianXY.x -= (64.0f * this->_data->_scale.y);
 
 				temp.setPosition(tileCartesianXY);
 				this->_data->window.draw(temp);
@@ -51,19 +53,19 @@ void AreaMap::Draw()
 
 void AreaMap::Update(sf::Keyboard::Key key)
 {
-	if (key == sf::Keyboard::Left)
+	if (key == sf::Keyboard::W)
 	{
 		this->_data->translation.translate({ 10.0f,0.0f });
 	}
-	else if (key == sf::Keyboard::Right)
+	else if (key == sf::Keyboard::S)
 	{
 		this->_data->translation.translate({ -10.0f,0.0f });
 	}
-	else if (key == sf::Keyboard::Up)
+	else if (key == sf::Keyboard::Q)
 	{
 		this->_data->_scale += {0.1f, 0.1f};
 	}
-	else if (key == sf::Keyboard::Down)
+	else if (key == sf::Keyboard::E)
 	{
 		this->_data->_scale -= {0.1f, 0.1f};
 	}

@@ -14,8 +14,28 @@ Player::~Player()
 {
 }
 
-void Player::Update(float dt)
+void Player::Update(float dt, sf::Keyboard::Key key)
 {
+	if (key == sf::Keyboard::Up)
+	{
+		this->m_Pos.y -= 5.0f;
+	}
+	else if (key == sf::Keyboard::Down)
+	{
+		this->m_Pos.y += 5.0f;
+	}
+	else if (key == sf::Keyboard::Left)
+	{
+		this->m_Pos.x -= 5.0f;
+	}
+	else if (key == sf::Keyboard::Right)
+	{
+		this->m_Pos.x += 5.0f;
+	}
+	else if (key == sf::Keyboard::Escape)
+	{
+		this->_data->window.close();
+	}
 }
 
 void Player::Draw()
@@ -25,7 +45,7 @@ void Player::Draw()
 		
 	CartesianPos = temp.transformPoint(CartesianPos);
 	CartesianPos.y = CartesianPos.y / 2;
-	//CartesianPos -= {32.0f * _data->_scale.x, 32.0f * _data->_scale.y};
+	CartesianPos -= {32.0f * _data->_scale.x, 32.0f * _data->_scale.y};
 	m_sprite.setPosition(CartesianPos);
 	m_sprite.setScale(_data->_scale);
 	_data->window.draw(m_sprite);

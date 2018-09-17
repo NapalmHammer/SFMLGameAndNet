@@ -42,6 +42,7 @@ void GameState::HandleInput()
 		if (sf::Event::KeyPressed == event.type)
 		{
 			_beginningMap.Update(event.key.code);
+			_testPlayer.Update(0.0f, event.key.code);
 		}
 		//if (this->_data->input.IsSpriteClicked(this->
 		//	_pauseButton, sf::Mouse::Left, this->_data->window))
