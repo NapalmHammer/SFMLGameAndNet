@@ -9,7 +9,7 @@ Log::Log()
 void Log::Draw(sf::RenderTarget & t)
 {
 	auto CharSize = m_Text.getCharacterSize();
-	for (int i = 0; i < m_MessageBuffer.size(); i++)
+	for (int i = 0; i < (int)m_MessageBuffer.size(); i++)
 	{
 		m_Text.setPosition({ 0, CharSize + CharSize * (float)i});
 		m_Text.setString(m_MessageBuffer[i]);
@@ -20,7 +20,7 @@ void Log::Draw(sf::RenderTarget & t)
 void Log::AppendLog(std::string s)
 {
 	m_MessageBuffer.push_back(s);
-	if (m_MessageBuffer.size() > m_MsgHistory)
+	if ((int)m_MessageBuffer.size() > m_MsgHistory)
 		PopLog();
 }
 

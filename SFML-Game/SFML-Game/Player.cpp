@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include <iostream>
 
 
 Player::Player(GameDataRef data, AreaMap& curMap, bool def)
@@ -21,10 +21,16 @@ void Player::Update(float dt)
 void Player::Draw()
 {
 	sf::Transform temp = _data->rotation * _data->translation;
-	sf::Vector2f tempPos = temp.transformPoint(m_Pos);
-	tempPos.y = tempPos.y / 2;
-	m_sprite.setPosition(tempPos);
+	sf::Vector2f CartesianPos = { m_Pos.x * _data->_scale.x, m_Pos.y * _data->_scale.y };
+		
+	CartesianPos = temp.transformPoint(CartesianPos);
+	CartesianPos.y = CartesianPos.y / 2;
+	//CartesianPos -= {32.0f * _data->_scale.x, 32.0f * _data->_scale.y};
+	m_sprite.setPosition(CartesianPos);
+	m_sprite.setScale(_data->_scale);
 	_data->window.draw(m_sprite);
+
+	std::cout << "X " << m_Pos.x << " Y " << m_Pos.y << std::endl;
 }
 
 void Player::Init(bool def)

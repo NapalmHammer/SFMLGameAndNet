@@ -12,15 +12,11 @@ AreaMap::AreaMap(GameDataRef data, sf::Vector2f spawnPointSet)
 
 void AreaMap::Init(int width, int height)
 {
-	_scale = { 1.0f,1.0f };
 	this->_data->assets.LoadTexture("Tiles", TILES_FILEPATH);
 	this->_tileSprites.setTexture(this->_data->assets.GetTexture("Tiles"));
 
 	_mapWidth = BEGINNING_MAP_WIDTH;
 	_mapHeight = BEGINNING_MAP_HEIGHT;
-
-	translation.translate(650.0f, -250.0f);
-	rotation.rotate(45);
 
 }
 
@@ -33,15 +29,20 @@ void AreaMap::Draw()
 			if (_map[i * _mapHeight + j] != 0)
 			{
 				sf::Sprite temp = GetTileTextureRect(_map[i * _mapHeight + j]);
-				sf::Vector2f tileCartesianXY({ ((float)j * 90.0f) * _scale.x, ((float)i * 90.0f) * _scale.y });
+				sf::Vector2f tileCartesianXY({ ((float)j * 90.0f) * this->_data->_scale.x, ((float)i * 90.0f) * this->_data->_scale.y });
 
-				sf::Transform transform = rotation * translation;
+				sf::Transform transform = this->_data->rotation * this->_data->translation;
 
 				tileCartesianXY = transform.transformPoint(tileCartesianXY);
 				tileCartesianXY.y /= 2;
 
+				sf::CircleShape shape(10.0f);
+				shape.setPosition(tileCartesianXY.x + 64.0f - 10.0f, tileCartesianXY.y - 10.0f);
+				shape.setFillColor(sf::Color(150, 50, 250));
+
 				temp.setPosition(tileCartesianXY);
 				this->_data->window.draw(temp);
+				this->_data->window.draw(shape);
 			}
 
 		}
@@ -52,19 +53,19 @@ void AreaMap::Update(sf::Keyboard::Key key)
 {
 	if (key == sf::Keyboard::Left)
 	{
-		translation.translate({ 10.0f,0.0f });
+		this->_data->translation.translate({ 10.0f,0.0f });
 	}
 	else if (key == sf::Keyboard::Right)
 	{
-		translation.translate({ -10.0f,0.0f });
+		this->_data->translation.translate({ -10.0f,0.0f });
 	}
 	else if (key == sf::Keyboard::Up)
 	{
-		_scale += {0.1f, 0.1f};
+		this->_data->_scale += {0.1f, 0.1f};
 	}
 	else if (key == sf::Keyboard::Down)
 	{
-		_scale -= {0.1f, 0.1f};
+		this->_data->_scale -= {0.1f, 0.1f};
 	}
 	else if (key == sf::Keyboard::Escape)
 	{
@@ -102,6 +103,29 @@ sf::Sprite AreaMap::GetTileTextureRect(int it)
 	}
 	break;
 	}
-	_tileSprites.setScale(_scale);
+	_tileSprites.setScale(this->_data->_scale);
 	return _tileSprites;
 }
+
+
+class A
+{
+public:
+	A(int v)
+		:black(v)
+	{
+
+	}
+	int black;
+};
+
+
+class B
+{
+public:
+	B(int v)
+	{
+		black = v;
+	}
+	int black;
+};

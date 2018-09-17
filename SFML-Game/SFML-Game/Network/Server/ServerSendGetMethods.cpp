@@ -30,7 +30,7 @@ bool Server::GetInt32_t(std::shared_ptr<Connection> _connection, std::int32_t &_
 bool Server::GetAll(std::shared_ptr<Connection> _connection, char* _data, int _totalBytes)
 {
 	std::size_t bytesReceived = 0;
-	while (bytesReceived < _totalBytes)
+	while (bytesReceived < (std::size_t)_totalBytes)
 	{
 		auto retnCheck = _connection->m_socket.receive(_data, std::size_t(_totalBytes), bytesReceived);
 		if (retnCheck == sf::Socket::Status::Error)

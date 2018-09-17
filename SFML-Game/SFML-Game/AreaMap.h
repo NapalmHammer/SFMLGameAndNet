@@ -26,7 +26,7 @@ enum TileType
 class AreaMap
 {
 public:
-	AreaMap(GameDataRef data, sf::Vector2f spawnPointSet = { 45, 45 });
+	AreaMap(GameDataRef data, sf::Vector2f spawnPointSet = { 0.0f, 0.0f });
 
 	void Init(int width, int height );
 	void Draw();
@@ -38,6 +38,7 @@ public:
 private:
 	sf::Sprite GetTileTextureRect(int it);
 	sf::Sprite _tileSprites;
+	sf::Vector2f m_spawPoint;
 	GameDataRef _data;
 	int _mapWidth;
 	int _mapHeight;
@@ -51,9 +52,5 @@ private:
 																1,0,2,2,2,2,2,2,0,1,
 																4,0,0,0,3,3,0,0,0,5,
 																4,4,1,1,1,1,1,1,5,5 };
-	sf::Transform translation;
-	sf::Transform rotation;
-	sf::Vector2f _scale;
-	sf::Vector2f m_spawPoint;
 };
 

@@ -12,6 +12,7 @@ Game::Game(int width, int height, std::string title)
 
 	_data->rotation.rotate(45);
 	_data->translation.translate({ 650.0f, -250.0f });
+	_data->_scale = { 1.0f, 1.0f };
 
 	this->Go();
 }
