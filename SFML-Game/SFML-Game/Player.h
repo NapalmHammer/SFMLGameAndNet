@@ -9,7 +9,7 @@ class Player : public Entity
 public:
 	Player(GameDataRef data, AreaMap& curMap, bool def = true);
 	~Player();
-	void Update(float dt, sf::Keyboard::Key key);
+	void Update(float dt);
 	void Draw();
 	void Init(bool def);
 	void SetDirection(const sf::Vector2f& dir);

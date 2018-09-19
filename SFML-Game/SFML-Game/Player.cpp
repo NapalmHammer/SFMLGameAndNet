@@ -14,28 +14,30 @@ Player::~Player()
 {
 }
 
-void Player::Update(float dt, sf::Keyboard::Key key)
+void Player::Update(float dt)
 {
-	if (key == sf::Keyboard::Up)
+	if (this->_data->input.keys[sf::Keyboard::Up])
 	{
 		this->m_Pos.y -= 5.0f;
 	}
-	else if (key == sf::Keyboard::Down)
+	if (this->_data->input.keys[sf::Keyboard::Down])
 	{
 		this->m_Pos.y += 5.0f;
 	}
-	else if (key == sf::Keyboard::Left)
+	if (this->_data->input.keys[sf::Keyboard::Left])
 	{
 		this->m_Pos.x -= 5.0f;
 	}
-	else if (key == sf::Keyboard::Right)
+	if (this->_data->input.keys[sf::Keyboard::Right])
 	{
 		this->m_Pos.x += 5.0f;
 	}
-	else if (key == sf::Keyboard::Escape)
+	if (this->_data->input.keys[sf::Keyboard::Escape])
 	{
 		this->_data->window.close();
 	}
+
+	std::cout << this->_data->input.keys[sf::Keyboard::Up] << ", " << this->_data->input.keys[sf::Keyboard::Down] << ", " << this->_data->input.keys[sf::Keyboard::Left] << ", " << this->_data->input.keys[sf::Keyboard::Right] << "\n";
 }
 
 void Player::Draw()
@@ -50,7 +52,7 @@ void Player::Draw()
 	m_sprite.setScale(_data->_scale);
 	_data->window.draw(m_sprite);
 
-	std::cout << "X " << m_Pos.x << " Y " << m_Pos.y << std::endl;
+	//std::cout << "X " << m_Pos.x << " Y " << m_Pos.y << std::endl;
 }
 
 void Player::Init(bool def)

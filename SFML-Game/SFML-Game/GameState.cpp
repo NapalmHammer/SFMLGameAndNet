@@ -30,19 +30,19 @@ void GameState::Init()
 
 void GameState::HandleInput()
 {
-	sf::Event event;
+	sf::Event e;
 
-	while (this->_data->window.pollEvent(event))
+	while (this->_data->window.pollEvent(e))
 	{
-		if (sf::Event::Closed == event.type)
+		if (sf::Event::Closed == e.type)
 		{
 			this->_data->window.close();
 		}
 
-		if (sf::Event::KeyPressed == event.type)
+		if (sf::Event::KeyPressed == e.type || sf::Event::KeyReleased == e.type)
 		{
-			_beginningMap.Update(event.key.code);
-			_testPlayer.Update(0.0f, event.key.code);
+			this->_data->input.UpdateInput(e);
+			_beginningMap.Update(e.key.code);
 		}
 		//if (this->_data->input.IsSpriteClicked(this->
 		//	_pauseButton, sf::Mouse::Left, this->_data->window))
@@ -54,7 +54,7 @@ void GameState::HandleInput()
 
 void GameState::Update(float dt)
 {
-
+	_testPlayer.Update(dt);
 }
 
 void GameState::Draw(float dt)
