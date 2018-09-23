@@ -15,6 +15,7 @@ struct GameData
 
 	sf::Transform translation;
 	sf::Transform rotation;
+	sf::Transform transform;
 	sf::Vector2f _scale;
 };
 

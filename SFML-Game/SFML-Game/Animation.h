@@ -3,7 +3,9 @@
 class Animation
 {
 public:
-	Animation(int x, int y, int width, int height, std::shared_ptr<sf::Texture> pTex, int nframes, float holdtime);
+	Animation() = default;
+	//Animation(int x, int y, int width, int height, std::shared_ptr<sf::Texture> pTex, int nframes, float holdtime);
+	Animation(int x, int y, int width, int height, sf::Texture& pTex, int nframes, float holdtime);
 	void ApplyToSprite(sf::Sprite& s) const;
 	void Update(float dt);
 
@@ -12,7 +14,8 @@ public:
 	float m_time;
 	float m_holdTime;
 	std::vector<sf::IntRect> m_frames;
-	std::shared_ptr<sf::Texture> m_pTex;
+	//std::shared_ptr<sf::Texture> m_pTex;
+	sf::Texture& m_rTex;
 
 private:
 	void Advance();

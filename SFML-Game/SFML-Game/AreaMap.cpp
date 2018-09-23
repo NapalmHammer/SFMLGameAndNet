@@ -1,7 +1,6 @@
 #include "AreaMap.h"
 
 
-
 AreaMap::AreaMap(GameDataRef data, sf::Vector2f spawnPointSet)
 	:_data(data),
 	m_spawPoint(spawnPointSet)
@@ -29,22 +28,20 @@ void AreaMap::Draw()
 			if (_map[i * _mapHeight + j] != 0)
 			{
 				sf::Sprite temp = GetTileTextureRect(_map[i * _mapHeight + j]);
-				sf::Vector2f tileCartesianXY({ ((float)j * 90.0f) * this->_data->_scale.x, ((float)i * 90.0f) * this->_data->_scale.y });
+				sf::Vector2f tileCartesianXY({ ((float)j * 90.0f) * this->_data->_scale.x, ((float)i * 90.0f) * this->_data->_scale.y });				
 
-				sf::Transform transform = this->_data->rotation * this->_data->translation;
-
-				tileCartesianXY = transform.transformPoint(tileCartesianXY);
+				tileCartesianXY = _data->transform.transformPoint(tileCartesianXY);
 				tileCartesianXY.y /= 2;
 
-				sf::CircleShape shape(10.0f);
-				shape.setPosition(tileCartesianXY.x, tileCartesianXY.y);
-				shape.setFillColor(sf::Color(150, 50, 250));
+				//sf::CircleShape shape(10.0f);
+				//shape.setPosition(tileCartesianXY.x, tileCartesianXY.y);
+				//shape.setFillColor(sf::Color(150, 50, 250));
 
 				tileCartesianXY.x -= (64.0f * this->_data->_scale.y);
 
 				temp.setPosition(tileCartesianXY);
 				this->_data->window.draw(temp);
-				this->_data->window.draw(shape);
+				//this->_data->window.draw(shape);
 			}
 
 		}
@@ -108,26 +105,3 @@ sf::Sprite AreaMap::GetTileTextureRect(int it)
 	_tileSprites.setScale(this->_data->_scale);
 	return _tileSprites;
 }
-
-
-class A
-{
-public:
-	A(int v)
-		:black(v)
-	{
-
-	}
-	int black;
-};
-
-
-class B
-{
-public:
-	B(int v)
-	{
-		black = v;
-	}
-	int black;
-};

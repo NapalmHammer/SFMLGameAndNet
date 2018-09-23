@@ -14,6 +14,8 @@ Game::Game(int width, int height, std::string title)
 	_data->translation.translate({ 650.0f, -250.0f });
 	_data->_scale = { 1.0f, 1.0f };
 
+	_data->transform = _data->rotation * _data->translation;
+
 	this->Go();
 }
 
@@ -43,6 +45,7 @@ void Game::Go()
 			this->_data->m_fsm.GetActiveState()->Update(dt);
 
 			accumulator -= dt;
+			_data->transform = _data->rotation * _data->translation;
 		}
 
 		interpolation = accumulator / dt;

@@ -2,22 +2,36 @@
 
 
 
-Animation::Animation(int x, int y, int width, int height, std::shared_ptr<sf::Texture> pTex, int nframes, float holdtime)
+//Animation::Animation(int x, int y, int width, int height, std::shared_ptr<sf::Texture> pTex, int nframes, float holdtime)
+//	:m_nFrames(nframes),
+//	m_holdTime(holdtime)
+//{
+//	m_frames.reserve(m_nFrames);
+//	m_iFrame = 0;
+//	m_time = 0.0f;
+//	for (int i = 0; i < m_nFrames; i++)
+//	{
+//		m_frames[i] = { x + i * width, y, x + (i + 1) * width, y + height };
+//	}
+//}
+
+Animation::Animation(int x, int y, int width, int height, sf::Texture & rTex, int nframes, float holdtime)
 	:m_nFrames(nframes),
-	m_holdTime(holdtime)
+	m_holdTime(holdtime),
+	m_rTex(rTex)
 {
-	m_frames.reserve(m_nFrames);
+	m_frames.resize(m_nFrames);
 	m_iFrame = 0;
 	m_time = 0.0f;
 	for (int i = 0; i < m_nFrames; i++)
 	{
-		m_frames[i] = { x + i * width, y, x + (i + 1) * width, y + height };
+		m_frames[i] = { x + i * width, y, width, height };
 	}
 }
 
 void Animation::ApplyToSprite(sf::Sprite & s) const
 {
-	s.setTexture(*m_pTex);
+	s.setTexture(m_rTex);
 	s.setTextureRect(m_frames[m_iFrame]);
 }
 
