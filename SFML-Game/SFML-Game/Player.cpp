@@ -98,11 +98,11 @@ void Player::Update(float dt)
 	//--
 
 	// Outputing information for debugging
-	std::cout << this->_data->input.keys[sf::Keyboard::Up] <<
-		", " << this->_data->input.keys[sf::Keyboard::Down] <<
-		", " << this->_data->input.keys[sf::Keyboard::Left] <<
-		", " << this->_data->input.keys[sf::Keyboard::Right] <<
-		"\n";
+	//std::cout << this->_data->input.keys[sf::Keyboard::Up] <<
+	//	", " << this->_data->input.keys[sf::Keyboard::Down] <<
+	//	", " << this->_data->input.keys[sf::Keyboard::Left] <<
+	//	", " << this->_data->input.keys[sf::Keyboard::Right] <<
+	//	"\n";
 
 	//--
 }
@@ -121,7 +121,7 @@ void Player::Init(bool def)
 	{
 		for (int i = 0; i < 8; i++)
 		{
-			Animation temp(0, 64 + (i * 64), 64, 64, (this->_data->assets.GetTexture("Default char texture")), 8, 0.1f);
+			Animation temp(0, 64 + (i * 64), 64, 64, (this->_data->assets.GetTexture("Default char texture")), 8, 0.05f);
 			m_animations.push_back(temp);
 		}
 		speed = 1.0f;
@@ -149,8 +149,46 @@ void Player::SetPos(sf::Vector2f newPos)
 }
 
 void Player::TryMove(sf::Vector2f pos)
-{
-	m_Pos += pos;
+{	
+	sf::Vector2f temp;
+	if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(m_Pos + pos)))
+	{
+		m_Pos += pos;
+
+		temp = pos;
+	}
+	else
+	{
+		if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(m_Pos + sf::Vector2f(pos.x, 0))))
+		{
+			if (pos.y == 1.0f * speed || pos.y == -1.0f * speed)
+			{
+				m_Pos += sf::Vector2f((pos.x * 2), 0);
+				temp.x = pos.x * 2;
+			}
+			else
+			{
+				m_Pos += sf::Vector2f(pos.x, 0);
+				temp.x = pos.x;
+			}
+		}
+	
+		if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(m_Pos + sf::Vector2f(0, pos.y))))
+		{
+			if (pos.x == 1.0f * speed|| pos.x == -1.0f * speed)
+			{
+				m_Pos += sf::Vector2f(0, (pos.y * 2));
+				temp.y = pos.y * 2;
+			}
+			else
+			{
+				m_Pos += sf::Vector2f(0, pos.y);
+				temp.y = pos.y;
+			}
+		}
+	}
+
+	std::cout << "Velocit: " << "x: " << temp.x << " y: " << temp.y << std::endl;
 }
 
 sf::Vector2f Player::GetCartesianPos(sf::Vector2f vec)

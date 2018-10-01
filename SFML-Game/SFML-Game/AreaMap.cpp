@@ -16,7 +16,7 @@ void AreaMap::Init(int width, int height)
 
 	_mapWidth = BEGINNING_MAP_WIDTH;
 	_mapHeight = BEGINNING_MAP_HEIGHT;
-
+	_mapDimensions = { 0,0, _mapWidth * 90, _mapHeight * 90 };
 }
 
 void AreaMap::Draw()

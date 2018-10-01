@@ -34,12 +34,17 @@ public:
 	{
 		return m_spawPoint;
 	}
+	sf::IntRect GetMapDimensions()
+	{
+		return _mapDimensions;
+	}
 	void Update(sf::Keyboard::Key key);
 private:
 	sf::Sprite GetTileTextureRect(int it);
 	sf::Sprite _tileSprites;
 	sf::Vector2f m_spawPoint;
 	GameDataRef _data;
+	sf::IntRect _mapDimensions;
 	int _mapWidth;
 	int _mapHeight;
 	int _map[BEGINNING_MAP_WIDTH * BEGINNING_MAP_HEIGHT] = {	5,5,1,1,1,1,1,1,4,4,
