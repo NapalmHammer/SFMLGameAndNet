@@ -16,59 +16,59 @@ Player::~Player()
 
 void Player::Update(float dt)
 {
-	m_animations[int(m_Direction)].Update(dt);
-	m_animations[int(m_Direction)].ApplyToSprite(m_sprite);
+	m_animations[int(this->m_Direction)].Update(dt);
+	m_animations[int(this->m_Direction)].ApplyToSprite(this->m_sprite);
 	// Handle setting direction and velocity based on keyboard input
 	if (this->_data->input.keys[sf::Keyboard::Up])
 	{
 		if (this->_data->input.keys[sf::Keyboard::Right])
 		{
-			SetDirection(Direction::NE);
-			SetVelocity({ 1.0f,-1.0f });
+			this->SetDirection(Direction::NE);
+			this->SetVelocity({ 1.0f,-1.0f });
 		}
 		else if (this->_data->input.keys[sf::Keyboard::Left])
 		{
-			SetDirection(Direction::NW);
-			SetVelocity({ -2.0f,-2.0f });
+			this->SetDirection(Direction::NW);
+			this->SetVelocity({ -2.0f,-2.0f });
 		}
 		else
 		{
-			SetDirection(Direction::N);
-			SetVelocity({ 0.0f,-2.0f });
+			this->SetDirection(Direction::N);
+			this->SetVelocity({ 0.0f,-2.0f });
 		}
 	}
 	else if (this->_data->input.keys[sf::Keyboard::Down])
 	{
 		if (this->_data->input.keys[sf::Keyboard::Right])
 		{
-			SetDirection(Direction::SE);
-			SetVelocity({ 2.0f,2.0f });
+			this->SetDirection(Direction::SE);
+			this->SetVelocity({ 2.0f,2.0f });
 		}
 		else if (this->_data->input.keys[sf::Keyboard::Left])
 		{
-			SetDirection(Direction::SW);
-			SetVelocity({ -1.0f,1.0f });
+			this->SetDirection(Direction::SW);
+			this->SetVelocity({ -1.0f,1.0f });
 		}
 		else
 		{
-			SetDirection(Direction::S);
-			SetVelocity({ 0.0f,2.0f });
+			this->SetDirection(Direction::S);
+			this->SetVelocity({ 0.0f,2.0f });
 		}
 	}
 	else if (this->_data->input.keys[sf::Keyboard::Left])
 	{
-		SetDirection(Direction::W);
-		SetVelocity({ -2.0f,0.0f });
+		this->SetDirection(Direction::W);
+		this->SetVelocity({ -2.0f,0.0f });
 	}
 	else if (this->_data->input.keys[sf::Keyboard::Right])
 	{
-		SetDirection(Direction::E);
-		SetVelocity({ 2.0f,0.0f });
+		this->SetDirection(Direction::E);
+		this->SetVelocity({ 2.0f,0.0f });
 	}
 	else
 	{
-		SetVelocity({ 0.0f,0.0f });
-		this->m_sprite.setTextureRect({ 0, (1 + (int)m_Direction) * 64,m_spriteSize.x, m_spriteSize.y });
+		this->SetVelocity({ 0.0f,0.0f });
+		this->m_sprite.setTextureRect({ 0, (1 + (int)this->m_Direction) * 64,this->m_spriteSize.x, this->m_spriteSize.y });
 	}
 	//--
 
@@ -151,38 +151,38 @@ void Player::SetPos(sf::Vector2f newPos)
 void Player::TryMove(sf::Vector2f pos)
 {	
 	sf::Vector2f temp;
-	if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(m_Pos + pos)))
+	if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(this->m_Pos + pos)))
 	{
-		m_Pos += pos;
+		this->m_Pos += pos;
 
 		temp = pos;
 	}
 	else
 	{
-		if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(m_Pos + sf::Vector2f(pos.x, 0))))
+		if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(this->m_Pos + sf::Vector2f(pos.x, 0))))
 		{
-			if (pos.y == 1.0f * speed || pos.y == -1.0f * speed)
+			if (pos.y == 1.0f * this->speed || pos.y == -1.0f * this->speed)
 			{
-				m_Pos += sf::Vector2f((pos.x * 2), 0);
+				this->m_Pos += sf::Vector2f((pos.x * 2), 0);
 				temp.x = pos.x * 2;
 			}
 			else
 			{
-				m_Pos += sf::Vector2f(pos.x, 0);
+				this->m_Pos += sf::Vector2f(pos.x, 0);
 				temp.x = pos.x;
 			}
 		}
 	
-		if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(m_Pos + sf::Vector2f(0, pos.y))))
+		if (this->m_curMapRef.GetMapDimensions().contains(sf::Vector2i(this->m_Pos + sf::Vector2f(0, pos.y))))
 		{
-			if (pos.x == 1.0f * speed|| pos.x == -1.0f * speed)
+			if (pos.x == 1.0f * this->speed|| pos.x == -1.0f * this->speed)
 			{
-				m_Pos += sf::Vector2f(0, (pos.y * 2));
+				this->m_Pos += sf::Vector2f(0, (pos.y * 2));
 				temp.y = pos.y * 2;
 			}
 			else
 			{
-				m_Pos += sf::Vector2f(0, pos.y);
+				this->m_Pos += sf::Vector2f(0, pos.y);
 				temp.y = pos.y;
 			}
 		}
